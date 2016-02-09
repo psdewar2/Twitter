@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -9,13 +9,16 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O6N-mm-vuh"/>
+                        <viewControllerLayoutGuide type="bottom" id="N9c-QM-HOV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h3U-eM-6gr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3U-eM-6gr">
                                 <rect key="frame" x="99" y="269" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login with Twitter"/>
                                 <connections>
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dUc-AO-1G4"/>
@@ -23,11 +26,60 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h3U-eM-6gr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VFN-WH-xUK"/>
+                            <constraint firstItem="h3U-eM-6gr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nac-rG-AeU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="2G9-MZ-W6V" kind="modal" identifier="loginSegue" modalTransitionStyle="partialCurl" id="tgA-KM-PHn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174.40000000000001" y="379.13999999999999"/>
+            <point key="canvasLocation" x="100" y="363"/>
+        </scene>
+        <!--Tweets View Controller-->
+        <scene sceneID="oBP-Rh-DYf">
+            <objects>
+                <viewController storyboardIdentifier="TweetsViewController" id="2G9-MZ-W6V" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Vk-hn-5RC"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0E-VR-dz1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yf3-xH-Q2v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yCh-7f-DsY">
+                                <rect key="frame" x="0.0" y="66" width="320" height="502"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irW-tR-hRI">
+                                <rect key="frame" x="136" y="28" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogout:" destination="2G9-MZ-W6V" eventType="touchUpInside" id="PsW-1w-mVh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yCh-7f-DsY" secondAttribute="trailing" id="1Oz-QB-Fb2"/>
+                            <constraint firstItem="yCh-7f-DsY" firstAttribute="centerX" secondItem="Yf3-xH-Q2v" secondAttribute="centerX" id="Hua-qy-eny"/>
+                            <constraint firstItem="irW-tR-hRI" firstAttribute="top" secondItem="7Vk-hn-5RC" secondAttribute="bottom" constant="8" id="SAy-JM-nHt"/>
+                            <constraint firstAttribute="trailing" secondItem="irW-tR-hRI" secondAttribute="trailing" constant="136" id="XZ0-Hq-aIW"/>
+                            <constraint firstItem="irW-tR-hRI" firstAttribute="leading" secondItem="Yf3-xH-Q2v" secondAttribute="leading" constant="136" id="cLM-np-2QD"/>
+                            <constraint firstItem="irW-tR-hRI" firstAttribute="centerX" secondItem="Yf3-xH-Q2v" secondAttribute="centerX" id="ekM-OZ-qYx"/>
+                            <constraint firstItem="yCh-7f-DsY" firstAttribute="centerY" secondItem="Yf3-xH-Q2v" secondAttribute="centerY" constant="33" id="i8x-ga-3x9"/>
+                            <constraint firstItem="yCh-7f-DsY" firstAttribute="leading" secondItem="Yf3-xH-Q2v" secondAttribute="leading" id="r2y-Bq-jbq"/>
+                            <constraint firstItem="e0E-VR-dz1" firstAttribute="top" secondItem="yCh-7f-DsY" secondAttribute="bottom" id="wUC-l6-P2l"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XMD-74-idS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="363"/>
         </scene>
     </scenes>
 </document>
